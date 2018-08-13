@@ -13,5 +13,5 @@
 - name: tomcat met file allow
   copy: src=context.xml dest=/usr/local/tomcat/apache-tomcat-8.5.32/webapps/manager/META-INF/
 - name: copy the war file 
-  copy: src="{{job}}" dest=/usr/local/tomcat/apache-tomcat-8.5.32/webapps/
+  copy: src="{{job}}" dest=/usr/local/tomcat/apache-tomcat-8.5.32/webapps/ROOT/ copy=no mode=0755
   notify: restart tomcat
