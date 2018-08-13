@@ -1,5 +1,9 @@
 ---
 # tasks file for babu.tomcat
+- name: add group "tomcat"
+  group: name=tomcat
+- name: add user "tomcat"
+  user: name=tomcat group=tomcat createhome=yes
 - name: remove the older version of the tomcat
   file: path=/usr/local/tomcat state=absent
 - name: download the tomcat
@@ -13,5 +17,5 @@
 - name: tomcat met file allow
   copy: src=context.xml dest=/usr/local/tomcat/apache-tomcat-8.5.32/webapps/manager/META-INF/
 - name: copy the war file 
-  copy: src="{{job}}" dest=/usr/local/tomcat/apache-tomcat-8.5.32/webapps/ROOT/ copy=no mode=0755 owner=babu
+  copy: src="{{job}}" dest=/usr/local/tomcat/apache-tomcat-8.5.32/webapps/ROOT/ copy=no mode=0755 owner=tomcat group=tomcat
   notify: restart tomcat
