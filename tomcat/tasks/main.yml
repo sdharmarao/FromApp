@@ -5,7 +5,7 @@
 - name: download the tomcat
   get_url: url="http://www-us.apache.org/dist/tomcat/tomcat-8/v8.5.32/bin/apache-tomcat-8.5.32.tar.gz" dest=/tmp
 - name: create the mkdir
-  command: mkdir /usr/local/tomcat  mode=0777
+  command: mkdir /usr/local/tomcat  mode=0777 state=directory
 - name: extract archive
   unarchive: src=/tmp/apache-tomcat-8.5.32.tar.gz dest=/usr/local/tomcat copy=no
 - name: tomcat user 
